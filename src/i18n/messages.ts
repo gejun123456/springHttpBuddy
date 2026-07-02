@@ -60,4 +60,42 @@ export const messages = {
     en: 'AI parameter prompt copied to clipboard',
     zh: 'AI 参数生成提示词已复制到剪贴板',
   },
+
+  // ---- Import Postman command ----
+  'importPostman.selectFile': {
+    en: 'Select a Postman Collection JSON file',
+    zh: '选择 Postman Collection JSON 文件',
+  },
+  'importPostman.parseError': {
+    en: 'Failed to parse Postman collection: {err}',
+    zh: '解析 Postman Collection 失败：{err}',
+  },
+  'importPostman.noRequests': {
+    en: 'No requests found in the Postman collection.',
+    zh: 'Postman 集合中未找到请求。',
+  },
+  'importPostman.pickTarget': {
+    en: 'Where to save the generated .http file?',
+    zh: '生成的文件保存到哪里？',
+  },
+  'importPostman.defaultLocation': {
+    en: 'Default Spring resources folder',
+    zh: '默认 Spring resources 目录',
+  },
+  'importPostman.chooseFolder': {
+    en: 'Choose a different folder...',
+    zh: '选择其他目录...',
+  },
+  'importPostman.selectTarget': {
+    en: 'Select target folder for .http file',
+    zh: '选择 .http 文件的目标目录',
+  },
+  'importPostman.writeError': {
+    en: 'Failed to write .http file: {err}',
+    zh: '写入 .http 文件失败：{err}',
+  },
+  'importPostman.success': {
+    en: 'Imported "{name}" — {count} requests → {file}',
+    zh: '已导入 "{name}" — {count} 个请求 → {file}',
+  },
 } as const;

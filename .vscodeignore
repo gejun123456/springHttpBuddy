@@ -11,3 +11,4 @@ demo/**
 scripts/**
 package-lock.json
 .gitignore
+docs/**

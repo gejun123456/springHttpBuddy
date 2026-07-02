@@ -4,3 +4,7 @@ out/
 *.vsix
 .DS_Store
 .idea/
+
+# VitePress docs build output
+docs/.vitepress/dist
+docs/.vitepress/cache

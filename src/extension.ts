@@ -7,6 +7,7 @@ import { createGenerateCommand } from './commands/generate';
 import { createOpenCommand } from './commands/open';
 import { createOpenControllerCommand } from './commands/openController';
 import { createCopyAiPromptCommand } from './commands/copyAiPrompt';
+import { createImportPostmanCommand } from './commands/importPostman';
 import { t } from './util/i18n';
 
 const HTTPYAC_EXTENSION_ID = 'anweber.vscode-httpyac';
@@ -58,6 +59,7 @@ export function activate(context: vscode.ExtensionContext): void {
     vscode.commands.registerCommand('springHttpBuddy.open', createOpenCommand()),
     vscode.commands.registerCommand('springHttpBuddy.openController', createOpenControllerCommand(parser)),
     vscode.commands.registerCommand('springHttpBuddy.copyAiPrompt', createCopyAiPromptCommand(parser)),
+    vscode.commands.registerCommand('springHttpBuddy.importPostman', createImportPostmanCommand()),
     vscode.workspace.onDidChangeTextDocument((event) => {
       if (event.document.languageId === 'java' || event.document.uri.fsPath.endsWith('.http')) scheduleCodeLensRefresh();
     }),

@@ -5,6 +5,7 @@ All notable changes to the "spring-http-buddy" extension will be documented in t
 ## [0.0.2] - 2026-07-01
 
 ### Added
+- **Postman Import**: New "Import from Postman" command to convert Postman Collection JSON files into `.http` files. Supports all body types (raw JSON, urlencoded, form-data, GraphQL, file), nested folder structures, and Postman variables.
 - **httpYac support**: Generate `.http` request files compatible with httpYac, in addition to REST Client and IntelliJ HTTP Client.
 - **Internationalization (i18n)**: Added Chinese language support. The extension now automatically detects VS Code display language and shows Chinese localized messages when available.
 - **Localized AI Prompt**: The "Copy AI Parameter Prompt" command now outputs prompts in the detected language.

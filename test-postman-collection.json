@@ -1,0 +1,221 @@
+{
+	"info": {
+		"name": "PetStore API",
+		"description": "A sample Pet Store API collection for testing Spring HTTP Buddy Postman import",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Pets",
+			"item": [
+				{
+					"name": "List all pets",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/pets?page=1&limit=20",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "pets"],
+							"query": [
+								{ "key": "page", "value": "1" },
+								{ "key": "limit", "value": "20" },
+								{ "key": "status", "value": "available", "disabled": true }
+							]
+						}
+					}
+				},
+				{
+					"name": "Create a pet",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Buddy\",\n  \"species\": \"dog\",\n  \"age\": 3,\n  \"tags\": [\"friendly\", \"vaccinated\"]\n}",
+							"options": {
+								"raw": { "language": "json" }
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/pets",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "pets"]
+						}
+					}
+				},
+				{
+					"name": "Get pet by ID",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{baseUrl}}/api/pets/1",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "pets", "1"]
+						}
+					}
+				},
+				{
+					"name": "Update pet",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"id\": 1,\n  \"name\": \"Buddy Updated\",\n  \"species\": \"dog\",\n  \"age\": 4\n}",
+							"options": {
+								"raw": { "language": "json" }
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/pets/1",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "pets", "1"]
+						}
+					}
+				},
+				{
+					"name": "Delete pet",
+					"request": {
+						"method": "DELETE",
+						"url": {
+							"raw": "{{baseUrl}}/api/pets/1",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "pets", "1"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{ "key": "username", "value": "admin", "type": "text" },
+								{ "key": "password", "value": "secret123", "type": "text" },
+								{ "key": "grant_type", "value": "password", "type": "text" }
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/auth/login",
+							"host": ["{{baseUrl}}"],
+							"path": ["auth", "login"]
+						}
+					}
+				},
+				{
+					"name": "Refresh token",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{ "key": "refresh_token", "value": "{{refreshToken}}", "type": "text" }
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/auth/refresh",
+							"host": ["{{baseUrl}}"],
+							"path": ["auth", "refresh"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Upload avatar (multipart)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "avatar",
+							"type": "file",
+							"src": "/Users/me/avatar.png"
+						},
+						{
+							"key": "description",
+							"value": "Profile picture",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/users/avatar",
+					"host": ["{{baseUrl}}"],
+					"path": ["api", "users", "avatar"]
+				}
+			}
+		},
+		{
+			"name": "Search pets (GraphQL)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query SearchPets($species: String, $limit: Int) {\n  pets(species: $species, limit: $limit) {\n    id\n    name\n    age\n  }\n}",
+						"variables": "{\n  \"species\": \"dog\",\n  \"limit\": 10\n}"
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/graphql",
+					"host": ["{{baseUrl}}"],
+					"path": ["graphql"]
+				}
+			}
+		},
+		{
+			"name": "Health check (simple URL)",
+			"request": {
+				"method": "GET",
+				"url": "http://localhost:8080/actuator/health"
+			}
+		}
+	]
+}

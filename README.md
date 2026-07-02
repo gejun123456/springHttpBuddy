@@ -83,6 +83,24 @@ All available as CodeLens actions — no need to memorize anything.
 | **Open HTTP Request** | Above a `@*Mapping` method | Jumps to the matching `###` block (picker if several) |
 | **Open Java Controller** | On a `###` block | Jumps back to the Java method that produced it |
 | **Copy AI Parameter Prompt** | On a `###` block | Copies a prompt so an AI can fill in realistic sample values |
+| **Import from Postman** | Command Palette (`Ctrl+Shift+P`) | Converts a Postman Collection JSON file into `.http` format |
+
+## Import from Postman
+
+Migrating from Postman? You can import your existing Postman Collection into `.http` files in one step.
+
+1. Export your collection from Postman as **Collection v2.1** (File → Export → Collection v2.1).
+2. In VS Code, open the Command Palette (`Ctrl+Shift+P` / `Cmd+Shift+P`).
+3. Run **Spring HTTP Buddy: Import from Postman**.
+4. Select the exported `.json` file.
+5. Choose where to save (defaults to `src/main/resources/`).
+
+The generated `.http` file preserves:
+- All HTTP methods (GET, POST, PUT, DELETE, PATCH)
+- Request body types (raw JSON, urlencoded, form-data, GraphQL, file)
+- Headers, query parameters, and path variables
+- Folder structure (flattened with prefix naming)
+- Postman variables (`{{baseUrl}}`, `{{token}}`)
 
 ## Smart defaults
 
