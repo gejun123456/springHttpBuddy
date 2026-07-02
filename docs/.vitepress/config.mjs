@@ -1,6 +1,7 @@
 import { defineConfig } from 'vitepress'
 
 export default defineConfig({
+  base: '/springHttpBuddy/',
   title: 'Spring HTTP Buddy',
   description: 'Turn Spring controllers into ready-to-send .http requests — in one click',
   lang: 'en-US',
